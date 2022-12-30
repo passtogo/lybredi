@@ -131,8 +131,9 @@ app.set('socket', io);
 const routes = require('./routes')(io);
 
 app.use('/', routes);
+const port = process.env.PORT || 3000;
 
 // Initialize localhost in port 300 with ssl certificate;
-sslserver.listen(process.env.PORT || 3000, async () => {
-  console.log(`Listening secure server on port ${process.env.PORT || 3000}`);
+sslserver.listen(process.env.PORT, async () => {
+  console.log(`Listening secure server on port ${port}`);
 });
