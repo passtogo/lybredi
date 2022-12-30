@@ -55,10 +55,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --ignore feedback.json server.js",
+    "build": "--ignore feedback.json server.js",
     "dev": "nodemon --ignore feedback.json server.js --ext js,ejs,css",
-    "database": "nodemon database.js",
-    "build": "npm run build Nixpacks --configuration=production"
+    "database": "nodemon database.js"
   },
   "keywords": [
     "social",
