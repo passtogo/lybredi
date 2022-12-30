@@ -58,7 +58,7 @@
     "start": "nodemon --ignore feedback.json server.js",
     "dev": "nodemon --ignore feedback.json server.js --ext js,ejs,css",
     "database": "nodemon database.js",
-    "build": "npm run build lybredi --configuration=production"
+    "build": "npm run build Nixpacks --configuration=production"
   },
   "keywords": [
     "social",
