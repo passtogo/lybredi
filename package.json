@@ -55,7 +55,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "npm run server.js",
     "dev": "nodemon --ignore feedback.json server.js --ext js,ejs,css",
     "database": "nodemon database.js"
   },
