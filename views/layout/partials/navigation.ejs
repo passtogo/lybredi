@@ -1,0 +1,28 @@
+<li class="left"><a href="/"><%= siteName %></a></li>
+<div class="dropdown">
+  <button class="dropbtn">
+    Dropdown
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-content">
+    <% if (login) { %>
+    <a href="'/publisher/author/logout">Logout</a>
+    <% } %>
+    <a href="/publisher">Publisher</a>
+    <a href="/contactus">Contact us</a>
+    <a href="/feedback">Feedback</a>
+  </div>
+</div>
+<% if (login) { %>
+<li class="right link"><a href="/publisher/author/logout">Logout</a></li>
+<% } %>
+<li class="right link"><a href="/publisher">Publisher</a></li>
+<li class="right link"><a href="/contactus">Contact us</a></li>
+<li class="right link"><a href="/feedback">Feedback</a></li>
+
+<!--
+  <div class="search-container">
+    <input type="text" placeholder="Search" />
+    <button><i class="fa fa-search"></i></button>
+  </div>
+-->

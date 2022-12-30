@@ -1,0 +1,37 @@
+<main>
+  <%- include('../layout/partials/sidenav') %>
+  <section id="posts">
+    <header>
+      <input type="hidden" value="<%= post.uuid %>" id="postid" />
+      <input type="hidden" value="<%= post.user %>" id="userid" />
+      <h1>Title: <%= post.title %></h1>
+      <h3>Author: <%= post.first %> <%= post.last %></h3>
+      <h5>Alias: <%= post.username %></h5>
+      <p>Category: <%= post.category %></p>
+      <small>Published <%= post.date %> </small>
+    </header>
+    <article><p><%= post.body %></p></article>
+    <footer>
+      <section id="userinput">
+        <% if (login) { %>
+        <input type="text" id="comment" placeholder="Share your thoughts on the reading!" />
+        <button id="submit">Comment</button>
+        <% } else { %>
+        <p id="enablecommentform">Want to make a Comment?</p>
+        <form method="post" action="/posts/<%= post.uuid %>/login" id="loginform">
+          <h4>Login</h4>
+          <input type="text" name="username" placeholder="Username" />
+          <input type="password" name="password" placeholder="Password" />
+          <a href="/publisher/recovery">Forgot username and/or password?</a>
+          <a href="/publisher">Don't have an account?</a>
+          <input type="submit" value="Login" />
+        </form>
+        <% } %>
+      </section>
+      <section id="comments">
+        <h3>Comments</h3>
+        <section id="container"></section>
+      </section>
+    </footer>
+  </section>
+</main>

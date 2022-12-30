@@ -1,0 +1,16 @@
+<main>
+  <%- include('../layout/partials/sidenav') %>
+  <section id="posts">
+    <% for (let post of posts) { %>
+    <article>
+      <h3><%= post.title %><br /></h3>
+      <small>Author: heber1990</small><br />
+      <small><%= post.created_at %></small>
+      <p><%= post.body %></p>
+      <a href="/posts/<%= post.uuid %>">Want more resources?</a>
+    </article>
+    <% } %>
+  </section>
+</main>
+
+<!-- integrate the comments for the posts -->

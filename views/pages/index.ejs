@@ -1,0 +1,33 @@
+<main>
+  <%- include('../layout/partials/sidenav') %>
+  <section id="intro">
+    <h1>Welcome to <%= siteName %></h1>
+    <h3>Short, Simple and to the Point reading</h3>
+    <p>Read something interesting without wasting your time.</p>
+  </section>
+  <section id="newposts">
+    <h2>Recently posted pleasures</h2>
+    <small>Click the post to read the full post</small>
+    <section id="postcontainer">
+      <% if (posts != null && posts.length > 0) { %> <% for (let post of posts) { %>
+      <article>
+        <a href="/posts/<%= post.uuid %>">
+          <h3><%= post.title %></h3>
+          <small>Author: <%= post.username %></small><br />
+          <small><%= post.date %></small>
+          <p><%= post.body.substring(0, 100) %>...</p>
+        </a>
+      </article>
+      <% } %> <% } %>
+    </section>
+  </section>
+</main>
+
+<!--Lorem ipsum dolor sit amet, consectetur adipiscing
+  elit. Fusce ornare hendrerit pellentesque. Cras
+  scelerisque euismod velit, ut maximus turpis iaculis
+  ac. Praesent eu posuere nisl. Nunc nec condimentum 
+  libero, sit amet gravida lacus. Suspendisse potenti.
+   Nam interdum, urna in facilisis egestas, nunc nunc 
+   volutpat turpis, non rhoncus ex urna at nisi. Nulla
+    imperdiet efficitur leo. -->

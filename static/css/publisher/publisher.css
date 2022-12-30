@@ -1,0 +1,57 @@
+main {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 20px 0;
+  justify-content: center;
+  align-items: center;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px 0;
+}
+
+#login {
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#login input[type='submit'] {
+  width: 50%;
+  align-self: center;
+  background-color: rgb(0, 8, 46);
+  color: aliceblue;
+  border: none;
+  padding: 5px 7px;
+  cursor: pointer;
+}
+
+#login a {
+  text-decoration: none;
+  color: black;
+}
+
+#register {
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#register input[type='submit'] {
+  width: 50%;
+  align-self: center;
+  background-color: rgb(0, 8, 46);
+  color: aliceblue;
+  border: none;
+  padding: 5px 7px;
+  cursor: pointer;
+}

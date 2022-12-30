@@ -1,0 +1,1039 @@
+
+
+<div class="message-controller">
+  <span class="message-back-button">Back</span>
+  <a href="#">Heber Hernandez</a>
+</div>
+
+
+if (window.innerWidth < 530) {
+  const article = document.querySelectorAll('.friend');
+
+  for (let i = 0; i < article.length; i++) {
+    article[i].className = article[i].className.replace(' active', ' activ');
+  }
+}
+
+// On smaller screens change the string from 'Last unread message' to 'Messages'
+window.addEventListener('resize', () => {
+  if (window.innerWidth <= 410) {
+    document.getElementById('message-heading').innerHTML = 'Messages';
+  } else {
+    document.getElementById('message-heading').innerHTML = 'Last unread message';
+  }
+
+  /*
+  if (window.innerWidth <= 530) {
+    const article = document.querySelectorAll('.friend');
+
+    for (let i = 0; i < article.length; i++) {
+      article[i].className = article[i].className.replace(' active', ' activ');
+    }
+  } else {
+    document.querySelector('.activ').className = document
+      .querySelector('.activ')
+      .className.replace(' activ', ' active');
+  }
+  */
+
+  if (window.innerWidth > 530) {
+    document.querySelector('.friend-list').style.display = 'block';
+    document.querySelector('.message-list').style.display = 'block';
+    document.querySelector('.message-controller').style.display = 'none';
+  } else if (
+    window.innerWidth <= 530 &&
+    window.getComputedStyle(document.querySelector('.message-list')).display == 'block' &&
+    window.getComputedStyle(document.querySelector('.friend-list')).display == 'block'
+  ) {
+    document.querySelector('.friend-list').style.display = 'block';
+    document.querySelector('.message-list').style.display = 'none';
+    document.querySelector('.message-controller').style.display = 'none';
+  }
+});
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+document.querySelector('#file').onchange = function () {
+  const fi = document.getElementById('file');
+  if (fi.files.length > 0) {
+    // FIRST CHECK IF ANY FILE IS SELECTED.
+
+    for (let i = 0; i <= fi.files.length - 1; i++) {
+      var fileName, fileExtension, fileSize, fileType, dateModified;
+
+      // FILE NAME AND EXTENSION.
+      fileName = fi.files.item(i).name;
+      fileExtension = fileName.replace(/^.*\./, '');
+
+      // CHECK IF ITS AN IMAGE FILE.
+      // TO GET THE IMAGE WIDTH AND HEIGHT, WE'LL USE fileReader().
+      if (
+        fileExtension == 'png' ||
+        fileExtension == 'PNG' ||
+        fileExtension == 'jpg' ||
+        fileExtension == 'JPG' ||
+        fileExtension == 'jpeg' ||
+        fileExtension == 'JPEG'
+      ) {
+        readImageFile(fi.files.item(i)); // GET IMAGE INFO USING fileReader().
+      } else {
+        // IF THE FILE IS NOT AN IMAGE.
+
+        fileSize = fi.files.item(i).size; // FILE SIZE.
+        fileType = fi.files.item(i).type; // FILE TYPE.
+        dateModified = fi.files.item(i).lastModifiedDate; // FILE LAST MODIFIED.
+
+        document.getElementById('fileInfo').innerHTML =
+          `${document.getElementById('fileInfo').innerHTML}<br /> ` +
+          `Name: <b>${fileName}</b> <br />` +
+          `File Extension: <b>${fileExtension}</b> <br />` +
+          `Size: <b>${Math.round(fileSize / 1024)}</b> KB <br />` +
+          `Type: <b>${fileType}</b> <br />` +
+          `Last Modified: <b>${dateModified}</b> <br />`;
+      }
+    }
+
+    // GET THE IMAGE WIDTH AND HEIGHT USING fileReader() API.
+    function readImageFile(file) {
+      var reader = new FileReader(); // CREATE AN NEW INSTANCE.
+
+      reader.onload = function (e) {
+        var img = new Image();
+        img.src = e.target.result;
+
+        img.onload = function () {
+          var w = this.width;
+          var h = this.height;
+
+          console.log(
+            `Name: ${file.name} ` +
+              `File Extension: ${fileExtension} ` +
+              `Size: ${Math.round(file.size / 1024)}kb ` +
+              `Width: ${w} ` +
+              `Height: ${h} ` +
+              `Type: ${file.type} ` +
+              `Last Modified: ${file.lastModifiedDate}`
+          );
+        };
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+};
+
+
+
+<img src="<%= typeof file != 'undefined' ? file : '' %>" alt="" />
+
+  <article class="profile-settings">
+    <div class="grid">
+      <div class="grid-header">
+        <span>Settings</span>
+      </div>
+      <div class="grid-content">
+        <div class="button-grid">
+          <button>Update phone number</button>
+          <button>Change password</button>
+          <button>Privacy settings</button>
+          <button>Block someone</button>
+          <button>File report</button>
+          <button>General settings</button>
+          <button>Edit Photos</button>
+          <button>Make Request</button>
+          <button>Coming soon</button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="profile-posts">
+    <article>
+      <header class="chip">
+        <img src="/img/heber.jpg" alt="heber's image" />
+        <span class="name">Heber Hernandez</span>
+        <span class="time">2 min ago</span>
+        <p>Likes: 22 | Comments: 12</p>
+      </header>
+      <main>
+        <section>
+          <p>
+            She put herslef in the middle of the room to show off. She put herslef in the middle of
+            the room to show off. She put herslef in the middle of the room to show off. She put
+            herslef in the middle of the room to show off. She put herslef in the middle of the room
+            to show off. She put herslef in the middle of the room to show off. She put herslef in
+            the middle of the room to show off. She put herslef in the middle of the room to show
+            off.
+          </p>
+        </section>
+        <section>
+          <button><i class="fa fa-heart"></i></button>
+        </section>
+      </main>
+      <footer>
+        <section class="comment-like-input">
+          <div class="comment-box">
+            <input type="text" placeholder="Comment" />
+            <button><i class="fa fa-commenting-o"></i></button>
+          </div>
+        </section>
+        <section class="comment-container">
+          <div class="chip">
+            <img src="/img/heber.jpg" alt="heber's image" />
+            <span class="name">Heber Hernandez commented: nice to see tht you are ok</span>
+            <div>
+              <button><i class="fa fa-heart"></i></button><small>6 min ago</small>
+            </div>
+          </div>
+        </section>
+      </footer>
+    </article>
+  </article>
+
+  <article class="profile-messages">
+    <div>
+      <section class="message-title">
+        <p>Heber's Vibes</p>
+      </section>
+      <section class="contact-list">
+        <article class="chip">
+          <img src="/img/heber.jpg" alt="heber's image" />
+          <span>Heber Hernandez Orellana</span>
+        </article>
+      </section>
+      <section class="messages-box">
+        <article class="chip" style="background-color: #0070ff; color: white">
+          <img src="/img/heber.jpg" alt="heber's image" />
+          <p>
+            Did you get to see the spiders? hi there this is a sample expantion just to how it looks
+          </p>
+        </article>
+      </section>
+      <section class="meassage-form">
+        <form action="#" method="POST">
+          <input type="text" />
+          <button><i class="fa fa-paper-plane-o"></i></button>
+        </form>
+      </section>
+    </div>
+  </article>-->
+
+
+<%= typeof imageUrl != 'undefined' ? imageUrl : '' %> <%= typeof msg != 'undefined' ? msg : '' %>
+
+if (!request.session.user) {
+                request.session.user = {
+                  token: jwt.sign(
+                    {
+                      _id: user.id,
+                      firstname: user.firstName,
+                      lastname: user.lastName,
+                      email: user.email,
+                      date: user.createdAt,
+                    },
+                    'userAPI'
+                  ),
+                };
+              }
+              return response.redirect('/user');
+
+
+
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const db = require('../models/index');
+const saltRounds = 10;
+
+// Restrict access to pages that require user login
+const loginRequired = (request, response, next) => {
+  if (request.session.user) {
+    next();
+  } else {
+    request.session.error = 'Access denied!';
+    return response.redirect('/');
+  }
+};
+
+// Create a new user and add it to the database
+const register = (request, response) => {
+  bcrypt.hash(request.body.password, saltRounds, function (err, hash) {
+    // Hashing the password before adding it to the database
+    // Store user and hashed password in your Database.
+    db.User.create({
+      firstName: request.body.firstname,
+      lastName: request.body.lastname,
+      email: request.body.email,
+      password: hash,
+    })
+      .then((user) => {
+        // If the user was added to the database redirect them to the user page
+        user.password = undefined;
+        return response.json(user);
+      })
+      .catch((err) => console.log(err)); // If there was an error log it in the console
+  });
+};
+
+// Look to see if a user exist in the database
+function authenticate(email, password, fn) {
+  if (!module.parent) console.log('authenticating %s:%s', email, password);
+  db.User.findOne({
+    where: {
+      email: email,
+    },
+  })
+    .then((user) => {
+      if (!user) {
+        return fn(new Error('Authentication failed. No user found!')); // If user does not exist throw an error
+      } else if (user) {
+        bcrypt // Compare the passwords to check if it is the right user
+          .compare(password, user.password)
+          .then(function (result) {
+            // result == true
+            if (!result) {
+              return fn(new Error('Authentication failed. No user found!'));
+            } else {
+              return fn(null, user); // If it is the right user then continue
+            }
+          })
+          .catch((err) => {
+            //If there is an error in the execution it will be handled
+            return fn(err);
+          });
+      }
+    })
+    .catch(() => {
+      return fn(new Error('Authentication failed. No user found!')); // If user does not exist throw an error
+    });
+}
+
+// Login a user and add it to the session
+const login = (request, response) => {
+  authenticate(request.body.email, request.body.password, (err, user) => {
+    if (user) {
+      // Regenerate session
+      console.log(request.session);
+      request.session.regenerate(function (err) {
+        // Add it to the session
+        request.session.user = user;
+        request.session.success = 'Authentication successful!';
+        return response.redirect('/user');
+      });
+    } else {
+      request.session.error = 'Authentication failed, try again';
+      return response.redirect('/');
+    }
+  });
+};
+
+// Exporting all needed modules
+module.exports = {
+  loginRequired,
+  register,
+  login,
+};
+
+
+
+db.User.findOne({
+    where: {
+      email: request.body.email,
+    },
+  })
+    .then((user) => {
+      if (!user) {
+        response.status(401).json({ message: 'Authontication failed. No Email/Password found' });
+      } else if (user) {
+        bcrypt
+          .compare(request.body.password, user.password)
+          .then(function (result) {
+            // result == true
+            if (!result) {
+              response
+                .status(401)
+                .json({ message: 'Authontication failed. No Email/Password found' });
+            } else {
+              if (!request.session.user) {
+                request.session.user = {
+                  token: jwt.sign(
+                    {
+                      _id: user.id,
+                      firstname: user.firstName,
+                      lastname: user.lastName,
+                      email: user.email,
+                      date: user.createdAt,
+                    },
+                    'userAPI'
+                  ),
+                };
+              }
+              return response.redirect('/user');
+            }
+          })
+          .catch((err) => console.log(err));
+      }
+    })
+    .catch((user) => {
+      console.log('catch');
+    });
+
+if (request.session.user) {
+    next();
+  } else {
+    return response.status(401).json({ message: 'Unauthorized user!' });
+  }
+
+//const createError = require('http-errors');
+
+//const UserServices = require('./services/Userservices');
+//const FeedbackServices = require('./services/FeedbackServices');
+
+//const userService = new UserServices('./data/user.json');
+//const feedbackService = new FeedbackServices('./data/feedback.json');
+
+//sync function that uses app.use to get all speaker
+//names and then stores them in a response.locals.speakernames
+//variable that the whole app can use
+
+app.use(
+  '/',
+  routes({
+    //userService,
+    //feedbackService,
+  })
+);
+
+// create the routes necessary for creating costume error
+//handelers
+
+return response.json({
+                token: jwt.sign(
+                  {
+                    _id: user.id,
+                    firstname: user.firstName,
+                    lastname: user.lastName,
+                    email: user.email,
+                    date: user.createdAt,
+                  },
+                  'userAPI'
+                ),
+              });
+
+
+
+document.querySelector('.loginEmail').onkeyup = () => {
+  const characters = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (characters.test(String(document.querySelector('.loginEmail').value).toLowerCase())) {
+    document.querySelector('.loginEmail').style.borderBottom = '4px solid #5cd65c';
+  } else {
+    document.querySelector('.loginEmail').style.borderBottom = 'none';
+  }
+};
+
+document.querySelector('.loginPassword').onkeyup = () => {
+  const specialchars = /[^A-Za-z0-9]/;
+  const length = document.querySelector('.loginPassword').value.length;
+  const numbers = /[0-9]/;
+  const letter = /[A-Za-z]/;
+
+  if (letter.test(document.querySelector('.loginPassword').value)) {
+    document.querySelector('.letter').style.display = 'none';
+  } else {
+    document.querySelector('.letter').style.display = 'block';
+  }
+
+  if (numbers.test(document.querySelector('.loginPassword').value)) {
+    document.querySelector('.numbers').style.display = 'none';
+  } else {
+    document.querySelector('.numbers').style.display = 'block';
+  }
+
+  if (length >= 6) {
+    document.querySelector('.length').style.display = 'none';
+  } else {
+    document.querySelector('.length').style.display = 'block';
+  }
+
+  if (specialchars.test(document.querySelector('.loginPassword').value)) {
+    document.querySelector('.specialchars').style.display = 'none';
+  } else {
+    document.querySelector('.specialchars').style.display = 'block';
+  }
+
+  if (
+    document.querySelector('.letter').style.display == 'none' &&
+    document.querySelector('.numbers').style.display == 'none' &&
+    document.querySelector('.length').style.display == 'none' &&
+    document.querySelector('.specialchars').style.display == 'none'
+  ) {
+    document.querySelector('#login-submit').disabled = false;
+    document.querySelector('.login-password-format').style.display = 'block';
+  } else {
+    document.querySelector('#login-submit').disabled = true;
+    document.querySelector('.login-password-format').style.display = 'none';
+  }
+};
+
+<%= typeof greeting != 'undefined' ? greeting : '' %> <br /><%= typeof msg != 'undefined' ? msg :
+  '' %>
+
+
+//const { Sequelize, Op, Model, DataTypes } = require('sequelize');
+
+/* const { Sequelize, DataTypes } = require('sequelize');
+
+const sequelize = new Sequelize({
+  dialect: 'sqlite',
+  storage: './database.sqlite',
+});
+
+const Usermodel = sequelize.define(
+  'User',
+  {
+    // Model attributes are defined here
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      // allowNull defaults to true
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  {
+    // Other model options go here
+    sequelize, // We need to pass the connection instance
+    modelName: 'User', // We need to choose the model name
+    timestamps: true,
+    updatedAt: false,
+  }
+);
+
+async function update() {
+  const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: './database.sqlite',
+  });
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+    await sequelize.sync({ alter: true });
+    sequelize.close();
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+}
+
+const addUser = async (request) => {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+    const user = Usermodel.create({
+      firstName: request.body.firstname,
+      lastName: request.body.lastname,
+      email: request.body.email,
+      password: request.body.password,
+    });
+    await sequelize.sync({ alter: true });
+    sequelize.close();
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+};
+
+update();
+
+module.exports = {
+  addUser,
+}; */
+
+
+/* const { Sequelize } = require('sequelize');
+const { User } = require('./databaseModels/userModel');
+
+const sequelize = new Sequelize({
+  dialect: 'sqlite',
+  storage: './database.sqlite',
+});
+
+async function start() {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+    console.log('Database has been created');
+    await sequelize.sync({ alter: true });
+    sequelize.close();
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+}
+
+start().catch(() => {}); */
+
+Some example text..
+Scroll back up again to "remove" the sticky position.
+
+
+ "aws-sdk": "^2.884.0",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "bower": "^1.8.12",
+    "browser-sync": "^2.26.13",
+    "browsersync": "0.0.1-security",
+    "cookie-session": "^1.4.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.10.0",
+    "gulp": "^4.0.2",
+    "gulp-jshint": "^2.1.0",
+    "gulp-sass": "^4.1.0",
+    "helmet": "^4.4.1",
+    "http-errors": "^1.8.0",
+    "jimp": "^0.16.1",
+    "jshint": "^2.12.0",
+    "jsonwebtoken": "^8.5.1",
+    "letsencrypt-express": "^1.1.5",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
+    "mysql2": "^2.2.5",
+    "node-sass": "^5.0.0",
+    "sequelize": "^6.6.2",
+    "sqlite3": "^5.0.2"
+
+
+"eslint": "^7.24.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1",
+    "sequelize-cli": "^6.2.0"
+
+const sslserver = https.createServer(
+  {
+    key: fs.readFileSync(path.join(__dirname, 'ssl', 'key.pem')),
+    cert: fs.readFileSync(path.join(__dirname, 'ssl', 'cert.pem')),
+  },
+  app
+);
+
+// Initialize localhost in port 300 with ssl certificate;
+sslserver.listen(port, () => {
+  console.log(`Listening secure server on port ${port}`);
+  console.log('https://localhost:3000');
+});
+
+  /* 
+    if (
+      data.post[i].likedusers.some(
+        (likeduser) => likeduser.uuid == document.getElementById('user-value').value
+      )
+    ) {
+      const html = document.querySelectorAll(`[data-id="${data.post[i].uuid}"]`);
+
+      for (let j = 0; j < html.length; j++) {
+        if (html[j].getAttribute('id') == 'like-button') {
+          html[j].innerHTML = 'Unlike';
+        }
+      }
+    }
+    */
+
+    // POST.JS
+    const post = io('https://localhost:3000/post');
+//const oucket = io('https://localhost:3000/user');
+//oucket.emit('not')
+
+if (window.innerWidth < 500) {
+  const article = document.querySelectorAll('.friend');
+
+  for (let i = 0; i < article.length; i++) {
+    article[i].className = article[i].className.replace(' active', ' activ');
+  }
+}
+
+document.querySelectorAll('.tablinks').forEach((button) => {
+  button.onclick = () => {
+    const tabcontent = document.querySelectorAll('.tabcontent');
+    const tablinks = document.querySelectorAll('.tablinks');
+
+    for (let i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = 'none';
+    }
+
+    for (let i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(' active', '');
+    }
+
+    if (button.textContent == 'Settings') {
+      document.getElementById(button.textContent.toLowerCase()).style.display = 'block';
+    } else if (button.textContent == 'Posts') {
+      document.getElementById(button.textContent.toLowerCase()).style.display = 'flex';
+      fetchposts();
+    } else {
+      document.getElementById(button.textContent.toLowerCase()).style.display = 'grid';
+    }
+    button.className += ' active';
+
+    if (button.textContent == 'Messages') {
+      fetchmessages();
+    }
+
+    if (button.textContent == 'Friends') {
+      fetchfriends();
+    }
+  };
+});
+
+// On smaller screens change the string from 'Last unread message' to 'Messages'
+window.addEventListener('resize', () => {
+  if (window.innerWidth < 500) {
+    const article = document.querySelectorAll('.friend');
+
+    for (let i = 0; i < article.length; i++) {
+      article[i].className = article[i].className.replace(' active', ' activ');
+    }
+  } else {
+    document.querySelector('.activ').className = document
+      .querySelector('.activ')
+      .className.replace(' activ', ' active');
+  }
+
+  if (window.innerWidth >= 500) {
+    document.querySelector('.friend-list').style.display = 'block';
+    document.querySelector('.message-list').style.display = 'block';
+    document.querySelector('.message-controller').style.display = 'none';
+  } else if (
+    window.innerWidth < 500 &&
+    window.getComputedStyle(document.querySelector('.message-list')).display == 'block' &&
+    window.getComputedStyle(document.querySelector('.friend-list')).display == 'block'
+  ) {
+    document.querySelector('.friend-list').style.display = 'block';
+    document.querySelector('.message-list').style.display = 'none';
+    document.querySelector('.message-controller').style.display = 'none';
+  }
+});
+
+document.querySelectorAll('.friend').forEach((selected) => {
+  selected.onclick = () => {
+    const article = document.querySelectorAll('.friend');
+
+    for (let i = 0; i < article.length; i++) {
+      article[i].className = article[i].className.replace(' active', '');
+    }
+
+    selected.className += ' active';
+    if (window.innerWidth < 500) {
+      document.querySelector('.friend-list').style.display = 'none';
+      document.querySelector('.message-list').style.display = 'block';
+      document.querySelector('.message-controller').style.display = 'block';
+    }
+
+    document.querySelector('.activ').className = document
+      .querySelector('.activ')
+      .className.replace(' activ', '');
+  };
+});
+
+// hide the messages list and display the list of friends in the messages modal
+document.querySelector('.message-back-button').onclick = () => {
+  if (window.innerWidth < 500) {
+    document.querySelector('.friend-list').style.display = 'block';
+    document.querySelector('.message-list').style.display = 'none';
+    document.querySelector('.message-controller').style.display = 'none';
+
+    const article = document.querySelectorAll('.friend');
+
+    for (let i = 0; i < article.length; i++) {
+      article[i].className = article[i].className.replace(' active', ' activ');
+    }
+  }
+};
+
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|| SOCKET EMIT ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+// Sending a message to the user selected in the messages modal
+document.getElementById('messages-send-button').onclick = () => {
+  document.querySelector('.messages').innerHTML += mine({
+    msg: document.getElementById('messages-input').value,
+    date: 'Just now',
+  });
+
+  document.querySelector('.messages').scrollTop = document.querySelector('.messages').scrollHeight;
+  post.emit('message', {
+    msg: document.getElementById('messages-input').value,
+    user: document.getElementById('user-value').value,
+    friend: document.querySelector('.active').firstElementChild.value,
+    name: document.getElementById('user-name').innerHTML,
+  });
+  document.getElementById('messages-input').value = '';
+  document.getElementById('messages-input').focus();
+};
+
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|| SOCKET ON ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+// Receiving the messages from the user who sent it
+post.on('message', (data) => {
+  document.querySelector('.messages').innerHTML += their(data);
+  document.querySelector('.messages').scrollTop = document.querySelector('.messages').scrollHeight;
+  document.querySelector('.messages-article').innerHTML = lastmsg(data);
+  document.querySelector('.notifications-article').innerHTML = notification(
+    data.name.split(' ')[0],
+    'sent a message'
+  );
+  messageslikeevents();
+});
+
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|| FETCH FUNCTIONS ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+// Fetch all messages and load all users who have sent messages
+function fetchmessages() {
+  fetch('https://localhost:3000/profile/getmessages', {
+    method: 'POST',
+    body: JSON.stringify({ user: document.getElementById('userid').value }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      listfriendsinmessanger(data.friends);
+      listmessagesoffriend(data.messages);
+    });
+}
+
+function fetchfriends() {
+  fetch('https://localhost:3000/profile/getfriends', {
+    method: 'POST',
+    body: JSON.stringify({ uuid: document.getElementById('userid').value }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  })
+    .then((res) => res.json())
+    .then((friends) => {
+      let html = '';
+      for (let friend of friends) {
+        if (friend.accepted) {
+          html += profilefriendlist(friend);
+        }
+      }
+      document.getElementById('friends').innerHTML = html;
+      deletefriend();
+    });
+}
+
+function fetchposts() {
+  fetch('https://localhost:3000/profile/getposts', {
+    method: 'POST',
+    body: JSON.stringify({ id: document.getElementById('userid').value }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  })
+    .then((res) => res.json())
+    .then((posts) => {
+      let html = '';
+      const name = document.getElementById('name').innerHTML;
+      for (let post of posts) {
+        post.name = name;
+        html += profilepostslist(post);
+      }
+      document.getElementById('posts').innerHTML = html;
+      editpost();
+    });
+}
+
+function profilefriendlist(friend) {
+  return `<div class="friend-container">
+      <div class="data">
+        <img src="/img/heber.jpg" alt="heber's image" />
+        <h3>${friend.first} ${friend.last}</h3>
+        <small>Joined ${friend.created_at}</small>
+      </div>
+      <div class="friendsettings">
+        <a href="https://localhost:3000/user/${friend.uuid}">Profile</a>
+        <a>Message</a>
+        <a>Report</a>
+        <a class="deletefriend" data-friend="${friend.uuid}">Delete</a>
+      </div>
+    </div>`;
+}
+
+function profilepostslist(post) {
+  return `<article>
+      <header>
+        <div class="chip">
+          <img src="/img/heber.jpg" alt="heber's image" />
+          <span>${post.name}</span>
+          <small> | ${post.created_at} | ${post.likes} Likes</small>
+        </div>
+      </header>
+      <section>
+        <p>
+          ${post.msg}
+        </p>
+        <span>No pictures available</span>
+      </section>
+      <div class="footer">
+        <button class="editpost" data-postid="${post.uuid}">Edit</button>
+      </div>
+    </article>`;
+}
+
+function friendmsglist(friend) {
+  return `<article class="friend${friend.select ? ' active' : ''}">
+          <input type="hidden" value="${friend.uuid}">
+          <img src="/img/heber.jpg" alt="heber's image" />
+          <div class="name">
+            <span>${friend.first} ${friend.last}</span>
+            <span class="dot"></span>
+          </div>
+          <small
+            >Pending...</small
+          >
+          <ul>
+            <li data-user="${friend.uuid}">profile</li>
+            <li data-user="${friend.uuid}">report</li>
+          </ul>
+        </article>`;
+}
+
+function mine(data) {
+  return `<article class="mine">
+            <span>${data.message}</span>
+            <ul class="messagesubinfo" data-msg="${data.id}">
+              <li class="timer">Sent ${data.date}</li>
+              ${
+                data.liked
+                  ? '<li class="timer"><small><i class="fa fa-check"></i></small></li>'
+                  : ''
+              }
+            </ul>
+          </article>`;
+}
+
+function their(data) {
+  return `<article class="their">
+            <img src="/img/heber.jpg" alt="heber's image" />
+            <span>${data.message}</span>
+            <ul>
+              <li class="action" data-id="${data.id}">${data.liked ? 'Unlike' : 'Like'}</li>
+              <li class="timer">Sent ${data.date}</li>
+            </ul>
+          </article>`;
+}
+
+function deletefriend() {
+  document.querySelectorAll('.deletefriend').forEach((button) => {
+    button.onclick = () => {
+      fetch('https://localhost:3000/profile/deletefriend', {
+        method: 'POST',
+        body: JSON.stringify({
+          friend: button.getAttribute('data-friend'),
+          user: document.getElementById('userid').value,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+        .then((res) => res.json())
+        .then((str) => {
+          button.parentElement.parentElement.remove();
+        });
+    };
+  });
+}
+
+function editpost() {
+  document.querySelectorAll('.editpost').forEach((button) => {
+    button.onclick = () => {
+      document.getElementById('post').style.display = 'block';
+
+      document.getElementById('newpostbody').focus();
+
+      document.getElementById('postbody').innerHTML =
+        button.parentElement.previousElementSibling.firstElementChild.innerHTML;
+
+      document.querySelectorAll('.close').forEach((close) => {
+        close.onclick = function () {
+          document.getElementById('post').style.display = 'none';
+          document.getElementById('newpostbody').value = '';
+        };
+      });
+
+      window.onclick = function (event) {
+        if (event.target == document.getElementById('post')) {
+          document.getElementById('post').style.display = 'none';
+          document.getElementById('newpostbody').value = '';
+        }
+      };
+
+      //document.getElementById('updatecomment').onclick = updatecomment();
+      document.getElementById('updatepost').onclick = () => {
+        fetch('https://localhost:3000/profile/updatepost', {
+          method: 'POST',
+          body: JSON.stringify({
+            post: button.getAttribute('data-postid'),
+            body: document.getElementById('newpostbody').value,
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        })
+          .then((res) => res.json())
+          .then((json) => {
+            document.getElementById('post').style.display = 'none';
+            document.getElementById('newpostbody').value = '';
+            button.parentElement.previousElementSibling.firstElementChild.innerHTML = json;
+          });
+      };
+    };
+  });
+}
+
+function listfriendsinmessanger(friends) {
+  let list = '';
+  for (let i = 0; i < friends.length; i++) {
+    if (i == 0) {
+      friends[i].select = true;
+    } else {
+      friends[i].select = false;
+    }
+    list += friendmsglist(friends[i]);
+  }
+  document.querySelector('.friend-list').innerHTML = list;
+}
+
+function listmessagesoffriend(messages) {
+  for (let message of messages) {
+    if (message.uuid == document.getElementById('userid').value) {
+      document.querySelector('.messages').innerHTML += mine({
+        message: message.body,
+        date: message.date,
+        id: message.id,
+        liked: message.friendlike,
+      });
+    } else {
+      document.querySelector('.messages').innerHTML += their({
+        message: message.body,
+        date: message.date,
+        id: message.id,
+        liked: message.liked,
+      });
+    }
+  }
+}

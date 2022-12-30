@@ -1,0 +1,25 @@
+/* Navigation Bar */
+ul {
+  background-color: rgb(0, 8, 46);
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+li a,
+.dropdown .dropbtn {
+  display: block;
+  text-decoration: none;
+  padding: 12px 16px;
+  color: aliceblue;
+  border: none;
+}
+
+li a:hover,
+.dropdown:hover .dropbtn {
+  background-color: rgb(31, 39, 80);
+}
+
+.dropdown {
+  display: none;
+}

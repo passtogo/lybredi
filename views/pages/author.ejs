@@ -1,0 +1,104 @@
+<main>
+  <% if (user != undefined) { %>
+
+  <section class="profile">
+    <article>
+      <img src="/img/code.png" alt="heber's image" />
+      <h1 id="author"><%= user.first %> <%= user.last %></h1>
+      <p class="title"><%= user.username %></p>
+      <p>HTML, CSS, Python, Javascript</p>
+    </article>
+  </section>
+
+  <section class="controls">
+    <h1>Hello, <%= user.username %>, What will you teach today?</h1>
+    <p>Remember to keep it short. Thank you!</p>
+
+    <form id="postform" method="post">
+      <select name="list" id="list">
+        <option value="">Select your category</option>
+        <option value="new">New category</option>
+        <option value="academic disciplines">Academic disciplines</option>
+        <option value="business">Business</option>
+        <option value="communication">Communication</option>
+        <option value="concepts">Concepts</option>
+        <option value="culture">Culture</option>
+        <option value="economy">Economy</option>
+        <option value="education">Education</option>
+        <option value="energy">Energy</option>
+        <option value="engineering">Engineering</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="entities">Entities</option>
+        <option value="ethics">Ethics</option>
+        <option value="events">Events</option>
+        <option value="food and drink">Food and drink</option>
+        <option value="geography">Geography</option>
+        <option value="government">Government</option>
+        <option value="health">Health</option>
+        <option value="history">History</option>
+        <option value="human behavior">Human behavior</option>
+        <option value="humanities">Humanities</option>
+        <option value="information">Information</option>
+        <option value="internet">Internet</option>
+        <option value="knowledge">Knowledge</option>
+        <option value="language">Language</option>
+        <option value="law">Law</option>
+        <option value="life">Life</option>
+        <option value="mass media">Mass media</option>
+        <option value="mathematics">Mathematics</option>
+        <option value="military">Military</option>
+        <option value="music">Music</option>
+        <option value="nature">Nature</option>
+        <option value="people">People</option>
+        <option value="philosophy">Philosophy</option>
+        <option value="politics">Politics</option>
+        <option value="religion">Religion</option>
+        <option value="science">Science</option>
+        <option value="society">Society</option>
+        <option value="sports">Sports</option>
+        <option value="technology">Technology</option>
+        <option value="time">Time</option>
+        <option value="universe">Universe</option>
+      </select>
+      <input type="text" name="newcat" id="newcat" placeholder="Category name?" />
+      <input type="hidden" name="user_id" id="user_id" value="<%= user.uuid %>" />
+      <input type="hidden" name="username" value="<%= user.username %>" />
+      <input type="text" name="title" placeholder="What is the title?" required />
+      <textarea
+        name="body"
+        placeholder="Write about your short lecture here..."
+        required
+      ></textarea>
+      <button type="submit" id="submit">Post</button>
+      <button type="button" id="excat">Existing categories</button>
+    </form>
+
+    <section id="collection" class="collection">
+      <h3>Your aticles</h3>
+      <select id="selection">
+        <option value="all">All</option>
+        <% if (categories != null) { %> <% for (let category of categories) { %>
+        <option value="<%= category.category %>">
+          <%= category.category[0].toUpperCase() + category.category.slice(1) %>
+        </option>
+        <% } } %>
+      </select>
+      <section id="postcontainer">
+        <% if (posts != null) { %> <% for (let post of posts) { %>
+        <article>
+          <h3><%= post.title %></h3>
+          <input type="hidden" value="<%= post.postid %>" />
+          <span class="edit">Edit post</span>
+          <small>Author: <%= post.username %></small><br />
+          <small><%= post.postdate %></small>
+          <p><%= post.body %></p>
+        </article>
+        <% } } %>
+      </section>
+    </section>
+  </section>
+
+  <% } else { %>
+  <h4>u have no permission</h4>
+  <% } %>
+</main>

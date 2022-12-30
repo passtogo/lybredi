@@ -1,0 +1,29 @@
+<main>
+  <section>
+    <h1>Login or Register to our page</h1>
+    <h3>Become publishers of great short content</h3>
+    <p>Inform our users and help them learn.</p>
+  </section>
+
+  <form action="/publisher/login" method="post" id="login">
+    <h4>Login</h4>
+    <input type="text" name="username" placeholder="Username" />
+    <input type="password" name="password" placeholder="Password" />
+    <a href="/publisher/recovery">Forgot username and/or password?</a>
+    <input type="submit" value="Login" />
+  </form>
+
+  <form action="/publisher/register" method="post" id="register">
+    <h4>Register</h4>
+    <input type="text" name="first" placeholder="First name" />
+    <input type="text" name="last" placeholder="Last name" />
+    <input type="text" name="username" placeholder="Username" />
+    <input type="password" name="password" placeholder="Password" />
+    <input type="password" name="password2" placeholder="Verify password" />
+    <input type="email" name="email" placeholder="email" />
+    <small><b>Note:</b> Email will only be used for password recovery</small>
+    <input type="tel" name="phone" placeholder="Phone #" />
+    <small><b>Note:</b> Phone number will only be used for password recovery</small>
+    <input type="submit" value="Register" />
+  </form>
+</main>

@@ -1,0 +1,39 @@
+main {
+  display: grid;
+  grid-template-columns: 0.5fr 3fr;
+  grid-template-rows: 95px auto;
+  gap: 5px 5px;
+}
+
+#intro {
+  grid-row: 1/2;
+  grid-column: 2/3;
+  background-color: inherit;
+  padding: 10px;
+}
+
+#intro h1,
+#intro h3 {
+  margin-bottom: 10px;
+}
+
+#newposts {
+  grid-row: 2/3;
+  grid-column: 2/3;
+  padding: 10px;
+}
+
+#newposts > h2,
+#newposts > small {
+  margin: 0px 0px 0px 15px;
+}
+
+#newposts article {
+  margin: 10px;
+}
+
+#newposts article a {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
