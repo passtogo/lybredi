@@ -7,11 +7,11 @@ const time = require('moment');
 const saltRounds = 10;
 
 const pool = new Pool({
-  user: process.env.USER || 'postgres',
-  host: process.env.HOST || 'localhost',
-  database: process.env.DATABASE || 'brainblogger',
-  password: process.env.PASSWORD || 'H3B3r!',
-  port: process.env.DBPORT || 5432,
+  user: process.env.PGUSER || 'postgres',
+  host: process.env.PGHOST || 'localhost',
+  database: process.env.PGDATABASE || 'brainblogger',
+  password: process.env.PGPASSWORD || 'H3B3r!',
+  port: process.env.PGPORT || 5432,
 });
 
 const getPostsAndCategories = (callback) => {
