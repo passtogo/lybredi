@@ -53,7 +53,7 @@ app.use(
 // Session middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(
-  session({
+  cookieSession({
     resave: false,
     saveUninitialized: false,
     secret: 'mfnrh47dy3nd8v47fgy47ruf48fhrdfhf84836dgfjt58rfjsodri8tf8ry5ry',
