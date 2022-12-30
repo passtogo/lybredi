@@ -57,7 +57,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --ignore feedback.json server.js",
     "dev": "nodemon --ignore feedback.json server.js --ext js,ejs,css",
-    "database": "nodemon database.js"
+    "database": "nodemon database.js",
+    "build": "npm run build lybredi --configuration=production"
   },
   "keywords": [
     "social",
