@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "social node app application",
   "main": "server.js",
+  "engines": {
+    "nodes": "14.14.0"
+  },
   "dependencies": {
     "aws-sdk": "^2.884.0",
     "bcrypt": "^5.0.1",
