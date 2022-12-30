@@ -118,10 +118,10 @@ const sslserver = https.createServer(
 );
 
 //const url = '192.168.1.2';
-const url = `https://0.0.0.0:${process.dev.PORT}`;
+const url = 'https://127.0.0.1:3000';
 const io = socketio(sslserver, {
   cors: {
-    origin: url,
+    origin: process.env.URL || url,
     methods: ['GET', 'POST'],
   },
 });
@@ -133,6 +133,6 @@ const routes = require('./routes')(io);
 app.use('/', routes);
 
 // Initialize localhost in port 300 with ssl certificate;
-sslserver.listen(process.env.PORT, async () => {
-  console.log(`Listening secure server on port ${process.env.PORT}`);
+sslserver.listen(process.env.PORT || 3000, async () => {
+  console.log(`Listening secure server on port ${process.env.PORT || 3000}`);
 });
