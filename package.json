@@ -55,7 +55,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "feedback.json server.js --ext js,ejs,css",
+    "start": "server.js --ext js,ejs,css",
     "dev": "nodemon --ignore feedback.json server.js --ext js,ejs,css",
     "database": "nodemon database.js"
   },
