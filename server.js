@@ -25,7 +25,17 @@ const app = express();
 app.use(compression());
 
 //Securing the express app using helmet
-app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      defaultSrc: ["'self'"],
+      connectSrc: [],
+      //scriptSrc: ["'self'", 'https://192.168.1.3:3000'],
+      scriptSrc: ["'self'", `${process.env.URL}:${process.env.PORT}` || 'https://127.0.0.1:3000'],
+    },
+  })
+);
 
 // Setting a proxy
 app.set('trust proxy', 1);
