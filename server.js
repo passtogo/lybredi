@@ -13,6 +13,7 @@ const socketio = require('socket.io');
 const consolidate = require('consolidate');
 const pg = require('pg');
 const compression = require('compression');
+const { createTables } = require('./services/UserController');
 //const dust = require('dustjs-helpers');
 
 // postgress connection log in data
@@ -108,6 +109,9 @@ app.locals.siteName = process.env.SITENAME || 'Test';
 
 //app.use(express.static(path.join(__dirname, 'public)));
 app.use(express.static(path.join(__dirname, 'static')));
+
+//populate database with tables
+createTables();
 
 const sslserver = http.createServer(
   // {
