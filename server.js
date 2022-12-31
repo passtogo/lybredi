@@ -32,7 +32,7 @@ app.use(
       defaultSrc: ["'self'"],
       connectSrc: [],
       //scriptSrc: ["'self'", 'https://192.168.1.3:3000'],
-      scriptSrc: ["'self'", `${process.env.URL}:${process.env.$PORT}` || 'https://127.0.0.1:3000'],
+      scriptSrc: ["'self'", `${process.env.URL}:${process.env.PORT}` || 'https://127.0.0.1:3000'],
     },
   })
 );
@@ -121,7 +121,7 @@ const sslserver = https.createServer(
 const url = 'https://127.0.0.1:3000';
 const io = socketio(sslserver, {
   cors: {
-    origin: `${process.env.URL}:${process.env.$PORT}` || url,
+    origin: `${process.env.URL}:${process.env.PORT}` || url,
     methods: ['GET', 'POST'],
   },
 });
@@ -133,6 +133,6 @@ const routes = require('./routes')(io);
 app.use('/', routes);
 
 // Initialize localhost in port 300 with ssl certificate;
-sslserver.listen(process.env.$PORT || 3000, async () => {
-  console.log(`Listening secure server on port ${process.env.$PORT || 3000}`);
+sslserver.listen(process.env.PORT || 3000, async () => {
+  console.log(`Listening secure server on port ${process.env.PORT || 3000}`);
 });
