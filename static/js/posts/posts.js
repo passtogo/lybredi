@@ -1,5 +1,5 @@
 //const url = 'https://192.168.1.2:3000';
-const url = 'https://127.0.0.1:3000';
+const url = `${location.host}/:${location.port}`;
 var post = io(url);
 
 post.on('post', (post) => {

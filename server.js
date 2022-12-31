@@ -1,8 +1,8 @@
 // Getting files used to start the server
 const express = require('express');
 const path = require('path');
-const https = require('https');
-//const http = require('http');
+//const https = require('https');
+const http = require('http');
 const { readFileSync } = require('fs');
 const cookieSession = require('cookie-session');
 const session = require('express-session');
@@ -109,16 +109,16 @@ app.locals.siteName = process.env.SITENAME || 'Test';
 //app.use(express.static(path.join(__dirname, 'public)));
 app.use(express.static(path.join(__dirname, 'static')));
 
-const sslserver = https.createServer(
-  {
-    key: readFileSync(path.join(__dirname, 'ssl', 'key.pem')),
-    cert: readFileSync(path.join(__dirname, 'ssl', 'cert.pem')),
-  },
+const sslserver = http.createServer(
+  // {
+  //   key: readFileSync(path.join(__dirname, 'ssl', 'key.pem')),
+  //   cert: readFileSync(path.join(__dirname, 'ssl', 'cert.pem')),
+  // },
   app
 );
 
 //const url = '192.168.1.2';
-const url = 'https://127.0.0.1:3000';
+const url = 'http://127.0.0.1:3000';
 const io = socketio(sslserver, {
   cors: {
     origin: `${process.env.URL}:${process.env.PORT}` || url,

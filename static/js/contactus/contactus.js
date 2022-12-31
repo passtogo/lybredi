@@ -1,4 +1,4 @@
-const url = 'https://127.0.0.1:3000/';
+const url = `${location.host}/:${location.port}`;
 
 document.getElementById('form').onsubmit = (event) => {
   event.preventDefault();

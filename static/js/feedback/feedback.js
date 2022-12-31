@@ -1,4 +1,4 @@
-const url = 'https://127.0.0.1:3000/';
+const url = `${location.host}/:${location.port}`;
 
 document.querySelectorAll('input[name="yesorno"]').forEach((button) => {
   button.onclick = () => {
