@@ -125,7 +125,7 @@ const sslserver = http.createServer(
 const url = 'http://127.0.0.1:3000';
 const io = socketio(sslserver, {
   cors: {
-    origin: `${process.env.URL}:${process.env.PORT}` || url,
+    origin: `${process.env.URL}` || url,
     methods: ['GET', 'POST'],
   },
 });
