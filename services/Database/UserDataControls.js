@@ -5,12 +5,12 @@ const time = require('moment');
 const saltRounds = 10;
 
 const pool = new Pool(
-  process.env.DBURL || {
-    user: 'postgres',
-    host: 'localhost',
-    database: 'brainblogger',
-    password: 'H3B3r!',
-    port: 5432,
+  {
+    user: process.env.PGUSER || 'postgres',
+    host: process.env.PGHOST || 'localhost',
+    database: process.env.PGDATABASE || 'brainblogger',
+    password: process.env.PGPASSWORD || 'H3B3r!',
+    port: process.env.PGPOST || 5432,
   }
 );
 
