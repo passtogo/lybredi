@@ -33,7 +33,7 @@ app.use(
       defaultSrc: ["'self'"],
       connectSrc: [],
       //scriptSrc: ["'self'", 'https://192.168.1.3:3000'],
-      scriptSrc: ["'self'", `${process.env.URL}` || 'https://127.0.0.1:3000'],
+      scriptSrc: ["'self'", `${process.env.URL}` || 'http://127.0.0.1:3000'],
     },
   })
 );
